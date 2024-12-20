@@ -6,7 +6,7 @@
   @apply h-[calc(100dvh-6rem)] w-full;
 }
 
-.title {
+h3 {
   @apply border border-black px-3 py-1 text-2xl font-bold shadow-[-7px_7px_0px_#000000] sm:px-6 sm:py-3;
 }
 

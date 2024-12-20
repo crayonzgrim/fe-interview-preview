@@ -12,6 +12,7 @@ import {
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { zodResolver } from '@hookform/resolvers/zod'
+import Link from 'next/link'
 import { useForm } from 'react-hook-form'
 import * as z from 'zod'
 
@@ -73,6 +74,14 @@ export const Signin = () => {
             </FormItem>
           )}
         />
+        <div>
+          <Link
+            href="/api/auth/signin"
+            className="rounded-md border border-black px-3 py-1"
+          >
+            구글로 로그인
+          </Link>
+        </div>
 
         <Button type="submit">들어가기</Button>
       </form>
