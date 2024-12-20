@@ -1,7 +1,11 @@
 export default function AuthPageLayout({
-  children,
+  children
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
-  return <div className="h-screen w-screen overflow-hidden">{children}</div>;
+  return (
+    <div className="flex w-full flex-col items-center justify-center px-28">
+      {children}
+    </div>
+  )
 }

@@ -1,38 +1,39 @@
-import { GlobalHeader } from "@/components/global";
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import { GlobalHeader } from '@/components/global'
+import type { Metadata } from 'next'
+import { Geist, Geist_Mono } from 'next/font/google'
+
+import './globals.css'
 
 const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+  variable: '--font-geist-sans',
+  subsets: ['latin']
+})
 
 const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+  variable: '--font-geist-mono',
+  subsets: ['latin']
+})
 
 export const metadata: Metadata = {
-  title: "FE-Interview-Preview",
-  description: "This page is made for frontend devleoper's interview",
-};
+  title: 'FE-Interview-Preview',
+  description: "This page is made for frontend devleoper's interview"
+}
 
 export default function RootLayout({
-  children,
+  children
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <div className="w-full px-5 py-5">
+        <div>
           <GlobalHeader />
           {children}
         </div>
       </body>
     </html>
-  );
+  )
 }
