@@ -16,9 +16,6 @@ const authOptions: NextAuthConfig = {
       clientId: process.env.GOOGLE_CLIENT_ID as string,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET as string
     })
-    // Credentials({
-    //   name: 'Credentials',
-    //   credentials: {
     //     username: {
     //       label: 'Username',
     //       type: 'text',
@@ -51,7 +48,35 @@ const authOptions: NextAuthConfig = {
     // })
   ],
   basePath: BASE_PATH,
-  secret: process.env.NEXTAUTH_SECRET
+  secret: process.env.NEXTAUTH_SECRET,
+  session: {
+    strategy: 'jwt',
+    maxAge: 60 * 60 * 24
+  },
+  callbacks: {
+    signIn: async () => {
+      return true
+    },
+    jwt: async ({ token, user }) => {
+      return token
+    },
+    session: async ({ session, token }) => {
+      return session
+    },
+    redirect: async ({ url, baseUrl }) => {
+      if (url.startsWith('/')) return `${baseUrl}${url}`
+      if (url) {
+        const { search, origin } = new URL(url)
+        const callbackUrl = new URLSearchParams(search).get('callbackUrl')
+        if (callbackUrl)
+          return callbackUrl.startsWith('/')
+            ? `${baseUrl}${callbackUrl}`
+            : callbackUrl
+        if (origin === baseUrl) return url
+      }
+      return baseUrl
+    }
+  }
 }
 
 export const { handlers, auth, signIn, signOut } = NextAuth(authOptions)
