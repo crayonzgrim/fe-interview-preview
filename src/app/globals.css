@@ -2,9 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-.container {
-  @apply h-[calc(100dvh-6rem)] w-full;
-}
+/* .container { */
+/*   @apply h-[calc(100dvh-6rem)] w-full; */
+/* } */
 
 h3 {
   @apply border border-black px-3 py-1 text-2xl font-bold shadow-[-7px_7px_0px_#000000] sm:px-6 sm:py-3;
@@ -71,5 +71,9 @@ h3 {
   }
   body {
     @apply bg-background text-foreground;
+  }
+
+  .main-container {
+    @apply h-[calc(100dvh-6rem)];
   }
 }

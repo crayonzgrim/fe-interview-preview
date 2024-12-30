@@ -4,23 +4,21 @@ import { useState } from 'react'
 
 import { CategoryItem } from './CategoryItem'
 
-// const CATEGORIES = [
-//   'All',
-//   'React.js',
-//   'Next.js',
-//   'Node.js',
-//   'Javascript',
-//   'Typescript',
-//   '자료구조',
-//   '알고리즘',
-//   '네트워크'
-// ]
+interface IContent {
+  id: number
+  title: string
+  image: string
+  like: number
+  unlike: number
+  createdDate: string
+  updatedDate: string
+}
 
 interface ICATEGORY {
   id: string
   title: string
-  image?: any | string
-  contents?: any[]
+  image?: string
+  contents?: IContent[]
 }
 
 const CATEGORIES: ICATEGORY[] = [
@@ -141,7 +139,7 @@ export const CategoryList = () => {
   const [selectedCategory, setSelectedCategory] = useState('all')
 
   //선택된 메뉴 색상
-  const selectedMenuClassName = `rounded-sm bg-black px-3 py-1 text-white`
+  const selectedMenuClassName = `bg-black px-3 py-1 text-white`
 
   /** Function */
   const changeCategoryHandler = (value: string) => {
@@ -150,7 +148,7 @@ export const CategoryList = () => {
 
   /** Render */
   return (
-    <div className="">
+    <div className="h-full w-full border border-red-900">
       <div className="my-10 flex justify-center gap-3">
         {CATEGORIES.map((menu) => {
           return (
@@ -160,7 +158,7 @@ export const CategoryList = () => {
               className={
                 selectedCategory === menu.id
                   ? selectedMenuClassName
-                  : 'rounded-sm border border-black px-3 py-1'
+                  : 'border border-black px-3 py-1'
               }
             >
               {menu.title}
@@ -180,8 +178,6 @@ export const CategoryList = () => {
                 id={category.id}
                 title={category.title}
                 image={category.image}
-                // description={blog.description}
-                // category={blog.category}
               />
             )
           })}
