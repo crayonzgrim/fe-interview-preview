@@ -168,7 +168,7 @@ export const CategoryList = () => {
       </div>
 
       <div className="flex w-full flex-col items-center justify-center">
-        <div className="grid w-full grid-cols-4 gap-4 px-24 py-4">
+        <div className="grid w-full grid-cols-3 gap-4 px-0 py-4">
           {CATEGORIES.filter((data) =>
             selectedCategory === 'all' ? true : data.id === selectedCategory
           ).map((category) => {

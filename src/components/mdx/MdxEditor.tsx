@@ -1,6 +1,6 @@
 'use client'
 
-import type { ForwardedRef } from 'react'
+import { type ForwardedRef, useEffect, useState } from 'react'
 
 import {
   MDXEditor,
@@ -19,13 +19,32 @@ type MdxEditorProps = {
 } & MDXEditorProps
 
 const MdxEditor = ({ editorRef, ...props }: MdxEditorProps) => {
+  /** Property */
+  const [isAdmin, setIsAdmin] = useState(false)
+
+  useEffect(() => {
+    try {
+      const user = localStorage.getItem('user')
+      if (user) {
+        const parsedUser = JSON.parse(user)
+        console.log(parsedUser)
+        if (parsedUser.email === 'cappu159@gmail.com') {
+          setIsAdmin(true)
+        }
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }, [])
+
+  /** Render */
   return (
     <MDXEditor
       {...props}
       ref={editorRef}
       onChange={console.log}
       autoFocus={true}
-      readOnly={true}
+      readOnly={!isAdmin}
       plugins={[
         headingsPlugin(),
         markdownShortcutPlugin(),

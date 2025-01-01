@@ -4,7 +4,10 @@ export default function AnswerPage() {
   return (
     <div>
       <h3>AnswerPage</h3>
-      <AnswerList />
+
+      <div className="mt-10">
+        <AnswerList />
+      </div>
     </div>
   )
 }

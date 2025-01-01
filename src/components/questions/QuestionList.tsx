@@ -33,20 +33,22 @@ export default function QuestionList() {
             className="flex w-full flex-col items-center justify-center"
           >
             <h3 className="w-96 text-center">QuestionsPage - {item.id}</h3>
-            <div className="flex h-full w-full flex-col items-center justify-center space-y-4 border p-8">
-              {item.contents.map((content, index) => {
-                return (
-                  <Button
-                    key={content.id}
-                    onClick={() => router.push(`/answer/${content.id}`)}
-                    className="w-[50rem] rounded-md border border-black bg-transparent p-4 py-6 text-black transition-all hover:text-white"
-                  >
-                    <h4 className="w-full text-left">
-                      {index + 1}. {content.title}
-                    </h4>
-                  </Button>
-                )
-              })}
+            <div className="flex h-full w-full flex-col items-center justify-center space-y-4 border-2 border-red-900 p-8">
+              <div className="border border-black">
+                {item.contents.map((content, index) => {
+                  return (
+                    <Button
+                      key={content.id}
+                      onClick={() => router.push(`/answer/${content.id}`)}
+                      className="w-[50rem] rounded-md border border-black bg-transparent p-4 py-6 text-black transition-all hover:text-white"
+                    >
+                      <h4 className="w-full text-left">
+                        {index + 1}. {content.title}
+                      </h4>
+                    </Button>
+                  )
+                })}
+              </div>
             </div>
           </div>
         )
