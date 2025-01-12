@@ -12,15 +12,13 @@ export const AnswerList = () => {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center border border-red-900 py-10">
-      <div className="w-[80rem]">
-        <h4>Q. {TEMP.title}</h4>
+    <div className="flex flex-col items-center justify-center px-5 py-10">
+      <h4>Q. {TEMP.title}</h4>
 
-        <MdxEditorUsage
-          markdown={markdown}
-          handleChange={{ changeMarkdownHandler }}
-        />
-      </div>
+      <MdxEditorUsage
+        markdown={markdown}
+        handleChange={{ changeMarkdownHandler }}
+      />
     </div>
   )
 }

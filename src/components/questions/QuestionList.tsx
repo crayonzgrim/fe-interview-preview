@@ -33,8 +33,9 @@ export default function QuestionList() {
             className="flex w-full flex-col items-center justify-center"
           >
             <h3 className="w-96 text-center">QuestionsPage - {item.id}</h3>
-            <div className="flex h-full w-full flex-col items-center justify-center space-y-4 border-2 border-red-900 p-8">
-              <div className="border border-black">
+
+            <div className="mt-8 flex h-full w-full items-center justify-center">
+              <div className="flex flex-col items-center justify-center gap-4">
                 {item.contents.map((content, index) => {
                   return (
                     <Button

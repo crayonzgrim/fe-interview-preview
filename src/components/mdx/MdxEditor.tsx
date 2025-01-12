@@ -3,14 +3,19 @@
 import { type ForwardedRef, useEffect, useState } from 'react'
 
 import {
+  BlockTypeSelect,
+  BoldItalicUnderlineToggles,
+  CodeToggle,
   MDXEditor,
   type MDXEditorMethods,
   type MDXEditorProps,
+  UndoRedo,
   headingsPlugin,
   listsPlugin,
   markdownShortcutPlugin,
   quotePlugin,
-  thematicBreakPlugin
+  thematicBreakPlugin,
+  toolbarPlugin
 } from '@mdxeditor/editor'
 import '@mdxeditor/editor/style.css'
 
@@ -43,29 +48,29 @@ const MdxEditor = ({ editorRef, ...props }: MdxEditorProps) => {
       {...props}
       ref={editorRef}
       onChange={console.log}
-      autoFocus={true}
+      autoFocus={false}
       readOnly={!isAdmin}
       plugins={[
         headingsPlugin(),
         markdownShortcutPlugin(),
         listsPlugin(),
         quotePlugin(),
-        thematicBreakPlugin()
-        // toolbarPlugin({
-        //   toolbarClassName: 'my-classname',
-        //   toolbarContents: () => (
-        //     <div className="flex w-full border bg-red-500">
-        //       {' '}
-        //       <UndoRedo />
-        //       <BlockTypeSelect />
-        //       <BoldItalicUnderlineToggles />
-        //       <CodeToggle />
-        //     </div>
-        //   )
-        // })
+        thematicBreakPlugin(),
+        toolbarPlugin({
+          toolbarClassName: 'my-classname',
+          toolbarContents: () => (
+            <div className="flex w-full border bg-red-500">
+              {' '}
+              <UndoRedo />
+              <BlockTypeSelect />
+              <BoldItalicUnderlineToggles />
+              <CodeToggle />
+            </div>
+          )
+        })
       ]}
       contentEditableClassName="prose"
-      className="rounded-md border border-black px-5 py-3"
+      className="rounded-md border-2 border-red-900 px-5 py-3"
     />
   )
 }

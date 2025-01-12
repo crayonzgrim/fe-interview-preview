@@ -148,7 +148,7 @@ export const CategoryList = () => {
 
   /** Render */
   return (
-    <div className="h-full w-full border border-red-900">
+    <div className="h-full w-full max-w-[1220px]">
       <div className="my-10 flex justify-center gap-3">
         {CATEGORIES.map((menu) => {
           return (
@@ -167,7 +167,7 @@ export const CategoryList = () => {
         })}
       </div>
 
-      <div className="flex w-full flex-col items-center justify-center">
+      <div className="flex w-full flex-col items-center justify-center px-3">
         <div className="grid w-full grid-cols-3 gap-4 px-0 py-4">
           {CATEGORIES.filter((data) =>
             selectedCategory === 'all' ? true : data.id === selectedCategory

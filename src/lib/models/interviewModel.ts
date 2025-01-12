@@ -17,19 +17,31 @@ const schema = new mongoose.Schema({
     type: String,
     required: true
   },
+  authorImg: {
+    type: String,
+    required: false
+  },
   image: {
     type: String,
     required: true
   },
-  authorImg: {
-    type: String,
-    required: true
+  likes: {
+    type: Number,
+    default: 0
   },
-  date: {
+  unlikes: {
+    type: Number,
+    default: 0
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now()
+  },
+  updatedAt: {
     type: Date,
     default: Date.now()
   }
 })
 
-export const questionModel =
-  mongoose.models.question || mongoose.model('question', schema)
+export const interviewModel =
+  mongoose.models.interview || mongoose.model('interview', schema)
