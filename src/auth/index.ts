@@ -57,10 +57,10 @@ const authOptions: NextAuthConfig = {
     signIn: async () => {
       return true
     },
-    jwt: async ({ token, user }) => {
+    jwt: async ({ token }) => {
       return token
     },
-    session: async ({ session, token }) => {
+    session: async ({ session }) => {
       return session
     },
     redirect: async ({ url, baseUrl }) => {
